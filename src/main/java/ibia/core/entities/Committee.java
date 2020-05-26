@@ -1,5 +1,12 @@
 package ibia.core.entities;
 
-public class Committee {
-    // represents an instance of a committee
+import ibia.core.utils.Id;
+
+// represents an instance of a committee
+public class Committee implements Entity {
+    public final String id = Id.generate("com");
+
+    public Committee() throws Exception {
+        // hmm
+    }
 }

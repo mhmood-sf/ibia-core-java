@@ -1,5 +1,12 @@
 package ibia.core.entities;
 
-public class Delegate {
-    // represents an instance of a delegate
+import ibia.core.utils.Id;
+
+// represents an instance of a delegate
+public class Delegate implements Entity {
+    public final String id = Id.generate("del");
+
+    public Delegate() throws Exception {
+        // hmm
+    }
 }
