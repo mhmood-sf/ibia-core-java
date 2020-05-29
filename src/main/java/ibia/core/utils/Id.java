@@ -81,12 +81,15 @@ public class Id implements IdentifierGenerator {
             Date current = new Date(System.currentTimeMillis());
             Date epoch = new Date(1577836800000L); // January 1, 2020
 
-            if (current.compareTo(created) > 0) return false;
-            if (epoch.compareTo(created) < 0) return false;
+            if (current.compareTo(created) <= 0) return false;
+            if (epoch.compareTo(created) >= 0) return false;
         } catch (NumberFormatException e) {
             return false;
         }
 
-        return prefix == "COM" || prefix == "CON" || prefix == "DEL" || prefix == "ENT";
+        return prefix.equals("COM")
+            || prefix.equals("CON")
+            || prefix.equals("DEL")
+            || prefix.equals("ENT");
     }
 }
