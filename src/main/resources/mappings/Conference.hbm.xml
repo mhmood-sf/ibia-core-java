@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ibia.core.entities">
+
+    <class name="Conference" table="CONFERENCE">
+        <id name="id" column="CONFERENCE_ID">
+            <generator class="ibia.core.utils.Id">
+            </generator>
+        </id>
+        <property name="name" column="CONFERENCE_NAME"/>
+    </class>
+
+</hibernate-mapping>
