@@ -43,9 +43,11 @@ public class IdTest {
         assertTrue(Id.verify(comId));
         assertTrue(Id.verify(conId));
         assertTrue(Id.verify(delId));
+        assertTrue(Id.verify("COM1590520368739"));
 
         assertFalse(Id.verify("com123456789"));
         assertFalse(Id.verify("this should fail"));
-        assertFalse(Id.verify("COM1590520368739"));
+        assertFalse(Id.verify("COM00000001"));
+        assertFalse(Id.verify("COM9999999999999"));
     }
 }
