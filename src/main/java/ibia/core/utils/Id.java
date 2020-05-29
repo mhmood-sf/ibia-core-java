@@ -69,7 +69,7 @@ public class Id implements IdentifierGenerator {
      * January 1, 2020 and the time this method is called
      * are considered valid.
      */
-    public static Boolean verify(String id) {
+    public static boolean verify(String id) {
         String prefix = id.substring(0, 3);
         String ts = id.substring(3);
 
