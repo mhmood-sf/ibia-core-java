@@ -6,48 +6,32 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import java.util.Date;
 
-import ibia.core.utils.Id;
-
 public class IdTest {
-    String comId;
-    String conId;
-    String delId;
-    String entId;
+    public String comId = Id.generate("COM");
+    public String conId = Id.generate("CON");
+    public String delId = Id.generate("DEL");
 
-    @Test public void testGenerateId() throws Exception {
-        comId = Id.generate("com");
-        conId = Id.generate("con");
-        delId = Id.generate("del");
-        entId = Id.generate("ent");
-    }
-
-    @Test(expected = Exception.class)
-    public void testGenerateIdThrows() throws Exception {
-        Id.generate("this should fail");
-    }
+    // To handle exception
+    public IdTest() throws Exception {}
 
     @Test public void testGenerateIdFormat() {
         assertTrue("comId starts with COM", comId.startsWith("COM"));
         assertTrue("conId starts with CON", conId.startsWith("CON"));
         assertTrue("delId starts with DEL", delId.startsWith("DEL"));
-        assertTrue("entId starts with ENT", entId.startsWith("ENT"));
 
         assertNotNull(Long.parseLong(comId.substring(3)));
         assertNotNull(Long.parseLong(conId.substring(3)));
         assertNotNull(Long.parseLong(delId.substring(3)));
-        assertNotNull(Long.parseLong(entId.substring(3)));
     }
 
     @Test public void testCreatedAt() throws Exception {
-        assertTrue(Id.createdAt(comId) instanceof Date);
-        assertTrue(Id.createdAt(conId) instanceof Date);
-        assertTrue(Id.createdAt(delId) instanceof Date);
-        assertTrue(Id.createdAt(entId) instanceof Date);
-
         assertNotNull(Id.createdAt(comId));
         assertNotNull(Id.createdAt(conId));
         assertNotNull(Id.createdAt(delId));
-        assertNotNull(Id.createdAt(entId));
+
+        assertTrue(Id.createdAt(comId) instanceof Date);
+        assertTrue(Id.createdAt(conId) instanceof Date);
+        assertTrue(Id.createdAt(delId) instanceof Date);
     }
 
     @Test(expected = Exception.class)
@@ -59,10 +43,9 @@ public class IdTest {
         assertTrue(Id.verify(comId));
         assertTrue(Id.verify(conId));
         assertTrue(Id.verify(delId));
-        assertTrue(Id.verify(entId));
-        assertTrue(Id.verify("COM1590520368739"));
 
         assertFalse(Id.verify("com123456789"));
         assertFalse(Id.verify("this should fail"));
+        assertFalse(Id.verify("COM1590520368739"));
     }
 }
