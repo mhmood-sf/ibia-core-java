@@ -1,5 +1,7 @@
 package ibia.core.db;
 
+import java.util.function.Predicate;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -46,8 +48,8 @@ public class DbClient {
         return sessionFactory;
     }
 
-    // TODO: test this
-    public static void insert(Entity entity) {
+    // TODO: Proper transaction err handling (see docs for hover:Session)
+    public static void insertOne(Entity entity) {
         SessionFactory sf = getSessionFactory();
         Session session = sf.openSession();
         session.beginTransaction();
@@ -56,17 +58,55 @@ public class DbClient {
         session.close();
     }
 
-    // TODO: unimplemented
-    public static void update() {
+    public static void insertAll(Entity[] entities) {
+        SessionFactory sf = getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        for (Entity entity : entities) {
+            session.save(entity);
+        }
+        session.getTransaction().commit();
+        session.close();
     }
 
     // TODO: unimplemented
-    public static void delete() {
+    public static void updateOne() {
+
+    }
+
+    public static void updateAll() {
 
     }
 
     // TODO: unimplemented
-    public static void find() {
+    public static void deleteOne() {
+
+    }
+
+    public static void deleteAll() {
+        
+    }
+
+    // TODO: test this + add proper err handling
+    public static <T> T findOne(Class<T> entityClass, String id) {
+        SessionFactory sf = getSessionFactory();
+        Session session = sf.openSession();
+        session.beginTransaction();
+        T entity = (T)session.find(entityClass, id);
+        return entity;
+    }
+
+    // TODO: unimplemented
+    // fetches all rows for the given entity
+    public static <T> void findAll(Class<T> entityClass) {
+
+    }
+
+    // TODO: unimplemented
+    // fetches all rows for the given entity,
+    // and filters them with the given predicate
+    // use predicate like filter.test(entity)
+    public static <T> void findAll(Class<T> entityClass, Predicate<T> filter) {
 
     }
 
