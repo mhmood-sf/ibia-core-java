@@ -10,6 +10,6 @@ public class DbClientTest {
     }
 
     @Test public void testInsert() throws Exception {
-        DbClient.insert(new Committee());
+        DbClient.insert(new Committee("it's all objects?", 10, "always has been"));
     }
 }
