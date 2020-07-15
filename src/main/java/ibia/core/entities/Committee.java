@@ -14,7 +14,7 @@ public class Committee implements Entity {
 
     public Committee() {}
 
-    public Committee(String name, int size, String conference) throws Exception {
+    public Committee(String name, int size, String conference) {
         this.id = Id.generate("com");
         this.name = name;
         this.size = size;

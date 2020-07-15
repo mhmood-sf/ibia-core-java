@@ -10,17 +10,23 @@ public class Conference implements Entity {
     private String id;
     private String name;
     private int size;
+    private boolean status;
 
     public Conference() {}
 
-    public Conference(String name, int size) throws Exception {
+    public Conference(String name, int size) {
         this.id = Id.generate("con");
         this.name = name;
         this.size = size;
+        this.status = true;
     }
 
     public String getType() {
         return type;
+    }
+
+    public boolean isActive() {
+        return status;
     }
 
     /* GETTERS and SETTERS used by hibernate */
@@ -47,5 +53,13 @@ public class Conference implements Entity {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

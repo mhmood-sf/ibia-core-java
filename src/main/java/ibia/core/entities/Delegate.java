@@ -13,7 +13,7 @@ public class Delegate implements Entity {
 
     public Delegate() {}
 
-    public Delegate(String name, String committee) throws Exception {
+    public Delegate(String name, String committee) {
         this.id = Id.generate("del");
         this.name = name;
         this.committee = committee;
