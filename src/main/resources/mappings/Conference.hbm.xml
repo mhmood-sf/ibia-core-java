@@ -16,6 +16,7 @@
         </id>
         <property name="name" type="java.lang.String" column="NAME"/>
         <property name="size" type="int" column="SIZE" />
+        <property name="status" type="boolean" column="STATUS" />
     </class>
 
 </hibernate-mapping>
