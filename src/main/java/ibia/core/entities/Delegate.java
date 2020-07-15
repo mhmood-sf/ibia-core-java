@@ -6,15 +6,17 @@ import ibia.core.utils.Id;
  * Represents a delegate within a(n) MUN committee.
  */
 public class Delegate implements Entity {
-    public final String type = "DEL";
+    private final String type = "DEL";
     private String id;
     private String name;
+    private String committee;
 
     public Delegate() {}
 
-    public Delegate(String name) throws Exception {
+    public Delegate(String name, String committee) throws Exception {
         this.id = Id.generate("del");
         this.name = name;
+        this.committee = committee;
     }
     
     public String getType() {
@@ -37,5 +39,13 @@ public class Delegate implements Entity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCommittee() {
+        return committee;
+    }
+
+    public void setCommittee(String committee) {
+        this.committee = committee;
     }
 }

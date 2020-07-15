@@ -6,15 +6,19 @@ import ibia.core.utils.Id;
  * Represents a committee within a(n) MUN conference.
  */
 public class Committee implements Entity {
-    public final String type = "COM";
+    private final String type = "COM";
     private String id;
     private String name;
+    private int size;
+    private String conference;
 
     public Committee() {}
 
-    public Committee(String name) throws Exception {
+    public Committee(String name, int size, String conference) throws Exception {
         this.id = Id.generate("com");
         this.name = name;
+        this.size = size;
+        this.conference = conference;
     }
 
     public String getType() {
@@ -37,5 +41,21 @@ public class Committee implements Entity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public String getConference() {
+        return conference;
+    }
+
+    public void setConference(String conference) {
+        this.conference = conference;
     }
 }

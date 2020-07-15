@@ -10,11 +10,12 @@
 <hibernate-mapping package="ibia.core.entities">
 
     <class name="Delegate" table="DELEGATES">
-        <id name="id" column="DELEGATE_ID">
+        <id name="id" type="java.lang.String" column="ID">
             <generator class="ibia.core.utils.Id">
             </generator>
         </id>
-        <property name="name" column="DELEGATE_NAME"/>
+        <property name="name" type="java.lang.String" column="NAME"/>
+        <property name="committee" type="java.lang.String" column="COMMITTEE"/>
     </class>
 
 </hibernate-mapping>

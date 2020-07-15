@@ -9,12 +9,13 @@
 
 <hibernate-mapping package="ibia.core.entities">
 
-    <class name="Conference" table="CONFERENCE">
-        <id name="id" column="CONFERENCE_ID">
+    <class name="Conference" table="CONFERENCES">
+        <id name="id" type="java.lang.String" column="ID">
             <generator class="ibia.core.utils.Id">
             </generator>
         </id>
-        <property name="name" column="CONFERENCE_NAME"/>
+        <property name="name" type="java.lang.String" column="NAME"/>
+        <property name="size" type="int" column="SIZE" />
     </class>
 
 </hibernate-mapping>

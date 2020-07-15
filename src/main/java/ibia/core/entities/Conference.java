@@ -6,15 +6,17 @@ import ibia.core.utils.Id;
  * Represents a(n) MUN conference.
  */
 public class Conference implements Entity {
-    public final String type = "CON";
+    private final String type = "CON";
     private String id;
     private String name;
+    private int size;
 
     public Conference() {}
 
-    public Conference(String name) throws Exception {
+    public Conference(String name, int size) throws Exception {
         this.id = Id.generate("con");
         this.name = name;
+        this.size = size;
     }
 
     public String getType() {
@@ -37,5 +39,13 @@ public class Conference implements Entity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
     }
 }
