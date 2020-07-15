@@ -4,6 +4,12 @@
 # Ignore Gradle build output directory
 build
 
+# ignore db files generated while testing
+*.db
+
+# priv
+priv
+
 # stupid vscode
 .settings
 .project
