@@ -1,5 +1,6 @@
 package ibia.core;
 
+import java.util.Collection;
 import java.util.function.Predicate;
 
 import org.hibernate.Session;
@@ -8,8 +9,6 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
-import ibia.core.entities.Entity;
 
 /*
  * Handles all database-related operations.
@@ -49,7 +48,7 @@ public class DbDriver {
     }
 
     // TODO: Proper transaction err handling (see docs for hover:Session)
-    public static void insertOne(Entity entity) {
+    public static <T> void insertOne(T entity) {
         SessionFactory sf = getSessionFactory();
         Session session = sf.openSession();
         session.beginTransaction();
@@ -58,11 +57,11 @@ public class DbDriver {
         session.close();
     }
 
-    public static void insertAll(Entity[] entities) {
+    public static <T> void insertAll(Collection<T> entities) {
         SessionFactory sf = getSessionFactory();
         Session session = sf.openSession();
         session.beginTransaction();
-        for (Entity entity : entities) {
+        for (T entity : entities) {
             session.save(entity);
         }
         session.getTransaction().commit();
