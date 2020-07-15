@@ -1,4 +1,4 @@
-package ibia.core.db;
+package ibia.core;
 
 import java.util.function.Predicate;
 
@@ -17,7 +17,7 @@ import ibia.core.entities.Entity;
  * Uses an embedded H2 database under the hood,
  * through the Hibernate ORM.
  */
-public class DbClient {
+public class DbDriver {
     private static StandardServiceRegistry registry;
     private static SessionFactory sessionFactory;
 
