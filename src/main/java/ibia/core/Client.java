@@ -7,7 +7,13 @@ import ibia.core.entities.Conference;
 import ibia.core.entities.Delegate;
 
 public class Client {
-    public static void beginNewConference(String name, int size, int committeeSize) {
+    /*
+     * Given the conference name, number of committees, and
+     * number of delegates per committee, creates and persists
+     * the conference instance, as well as the committees and
+     * delegates. Returns the conference instance created.
+     */
+    public static Conference beginNewConference(String name, int size, int committeeSize) {
         Conference conf = new Conference(name, size);
         ArrayList<Committee> committees = new ArrayList<>();
         ArrayList<Delegate> delegates = new ArrayList<>();
@@ -17,7 +23,7 @@ public class Client {
             committees.add(com);
 
             for (int j = 0; j <= committeeSize; j++) {
-                Delegate del = new Delegate(j + "", com.getId());
+                Delegate del = new Delegate(j + "", "Drumpf", com.getId());
                 delegates.add(del);
             }
         }
@@ -25,5 +31,23 @@ public class Client {
         DbDriver.insertOne(conf);
         DbDriver.insertAll(committees);
         DbDriver.insertAll(delegates);
+
+        return conf;
+    }
+
+    /*
+     * Given the conference ID, returns the committees belonging
+     * to that conference.
+     */
+    public static ArrayList<Committee> getConferenceCommittees(String id) {
+        return new ArrayList<Committee>();
+    }
+
+    /*
+     * Given the committee ID, returns the delegates belonging
+     * to that committee.
+     */
+    public static ArrayList<Delegate> getCommitteeDelegates(String id) {
+        return new ArrayList<Delegate>();
     }
 }
