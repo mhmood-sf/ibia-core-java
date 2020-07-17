@@ -6,6 +6,7 @@ package ibia.core.utils;
  * All data is obtained from the repository at: https://github.com/stefangabos/world_countries
  */
 public class Country {
+
     /*
      * Returns list of the full names for all 249 territories
      * that have an officially assigned ISO 3166-1 code.
@@ -21,13 +22,6 @@ public class Country {
     public static String[] listByCode() {
         return new String[0];
     }
-
-/*
-    // all countries by alpha-3 ISO codes
-    public static String[] listByAlpha3() {
-        return new String[0];
-    }
-*/
 
     /*
      * Return the full name for a territory,

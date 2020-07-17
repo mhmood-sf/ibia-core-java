@@ -10,7 +10,7 @@ public class Delegate implements Entity {
     private String id;
     private String name;
     private String committee;
-    private String delegation; // An alpha3 country code OR a custom delegation. The country code is used to fetch the flag icon.
+    private String delegation; // An alpha2 country code OR a custom delegation. The country code is used to fetch the flag icon.
 
     public Delegate() {}
 
