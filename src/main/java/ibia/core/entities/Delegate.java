@@ -20,7 +20,7 @@ public class Delegate implements Entity {
         this.committee = committee;
         this.delegation = delegation;
     }
-    
+
     public String getType() {
         return type;
     }
