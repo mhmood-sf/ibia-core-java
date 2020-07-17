@@ -15,3 +15,6 @@ priv
 .project
 .vscode
 .classpath
+
+# ignore image files because really no need to put them in src control atm
+*.png
