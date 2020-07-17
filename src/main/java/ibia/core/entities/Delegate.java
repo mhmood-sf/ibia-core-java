@@ -10,13 +10,15 @@ public class Delegate implements Entity {
     private String id;
     private String name;
     private String committee;
+    private String delegation; // An alpha3 country code OR a custom delegation. The country code is used to fetch the flag icon.
 
     public Delegate() {}
 
-    public Delegate(String name, String committee) {
+    public Delegate(String name, String delegation, String committee) {
         this.id = Id.generate("del");
         this.name = name;
         this.committee = committee;
+        this.delegation = delegation;
     }
     
     public String getType() {
@@ -47,5 +49,13 @@ public class Delegate implements Entity {
 
     public void setCommittee(String committee) {
         this.committee = committee;
+    }
+
+    public String getDelegation() {
+        return delegation;
+    }
+
+    public void setDelegation(String delegation) {
+        this.delegation = delegation;
     }
 }

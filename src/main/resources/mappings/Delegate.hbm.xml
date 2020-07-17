@@ -16,6 +16,7 @@
         </id>
         <property name="name" type="java.lang.String" column="NAME"/>
         <property name="committee" type="java.lang.String" column="COMMITTEE"/>
+        <property name="delegation" type="java.lang.String" column="DELEGATION" />
     </class>
 
 </hibernate-mapping>
