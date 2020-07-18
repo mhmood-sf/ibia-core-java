@@ -14,10 +14,10 @@ public class Committee implements Entity {
 
     public Committee() {}
 
-    public Committee(String name, int size, String conferenceId) {
+    public Committee(String name, String conferenceId) {
         this.id = Id.generate("com");
         this.name = name;
-        this.size = size;
+        this.size = 0;
         this.conferenceId = conferenceId;
     }
 

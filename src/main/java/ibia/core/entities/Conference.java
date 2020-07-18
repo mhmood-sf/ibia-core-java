@@ -14,10 +14,10 @@ public class Conference implements Entity {
 
     public Conference() {}
 
-    public Conference(String name, int size) {
+    public Conference(String name) {
         this.id = Id.generate("con");
         this.name = name;
-        this.size = size;
+        this.size = 0;
         this.status = true;
     }
 
