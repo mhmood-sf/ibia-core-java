@@ -1,6 +1,7 @@
 package ibia.core;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.function.Predicate;
 
 import javax.persistence.TypedQuery;
@@ -66,7 +67,7 @@ public class DbDriver {
     }
 
     // TODO: test
-    public static <T> void insertAll(List<T> entities) {
+    public static <T> void insertAll(Collection<T> entities) {
         Session session = openSession();
         session.beginTransaction();
         for (T entity : entities) session.save(entity);
@@ -84,7 +85,7 @@ public class DbDriver {
     }
 
     // TODO: test
-    public static <T> void updateAll(List<T> entities) {
+    public static <T> void updateAll(Collection<T> entities) {
         Session session = openSession();
         session.beginTransaction();
         for (T entity : entities) session.update(entity);
@@ -101,7 +102,7 @@ public class DbDriver {
         session.close();
     }
 
-    public static <T> void deleteAll(List<T> entities) {
+    public static <T> void deleteAll(Collection<T> entities) {
         Session session = openSession();
         session.beginTransaction();
         for (T entity : entities) session.delete(entity);
@@ -118,7 +119,7 @@ public class DbDriver {
     }
 
     // TODO: test
-    public static <T> List<T> fetchAll(Class<T> entityClass) {
+    public static <T> ArrayList<T> fetchAll(Class<T> entityClass) {
         Session session = openSession();
         session.beginTransaction();
         CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -127,21 +128,28 @@ public class DbDriver {
         CriteriaQuery<T> all = cq.select(rootEntry);
 
         TypedQuery<T> allQuery = session.createQuery(all);
-        List<T> results = allQuery.getResultList();
+        ArrayList<T> results = (ArrayList<T>)allQuery.getResultList();
         session.close();
         return results;
     }
 
     // TODO: test
-    // fetches all rows for the given entity,
-    // and filters them with the given predicate
-    // use predicate like filter.test(entity)
-    public static <T> T find(Class<T> entityClass, Predicate<T> filter) {
-        List<T> entities = fetchAll(entityClass);
+    public static <T> T findOne(Class<T> entityClass, Predicate<T> filter) {
+        ArrayList<T> entities = fetchAll(entityClass);
         for (T entity : entities) {
             if (filter.test(entity)) return entity;
         }
         return null;
+    }
+
+    // TODO: test
+    public static <T> ArrayList<T> findAll(Class<T> entityClass, Predicate<T> filter) {
+        ArrayList<T> found = new ArrayList<>();
+        ArrayList<T> entities = fetchAll(entityClass);
+        for (T entity : entities) {
+            if (filter.test(entity)) found.add(entity);
+        }
+        return found.size() > 0 ? found : null;
     }
 
     public static void shutdown() {
