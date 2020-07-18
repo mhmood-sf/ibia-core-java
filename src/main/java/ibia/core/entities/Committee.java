@@ -10,15 +10,15 @@ public class Committee implements Entity {
     private String id;
     private String name;
     private int size;
-    private String conference;
+    private String conferenceId;
 
     public Committee() {}
 
-    public Committee(String name, int size, String conference) {
+    public Committee(String name, int size, String conferenceId) {
         this.id = Id.generate("com");
         this.name = name;
         this.size = size;
-        this.conference = conference;
+        this.conferenceId = conferenceId;
     }
 
     public String getType() {
@@ -51,11 +51,11 @@ public class Committee implements Entity {
         this.size = size;
     }
 
-    public String getConference() {
-        return conference;
+    public String getConferenceId() {
+        return conferenceId;
     }
 
-    public void setConference(String conference) {
-        this.conference = conference;
+    public void setConferenceId(String conferenceId) {
+        this.conferenceId = conferenceId;
     }
 }

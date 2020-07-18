@@ -16,7 +16,7 @@
         </id>
         <property name="name" type="java.lang.String" column="NAME"/>
         <property name="size" type="int" column="SIZE" />
-        <property name="conference" type="java.lang.String" column="CONFERENCE" />
+        <property name="conferenceId" type="java.lang.String" column="CONFERENCE_ID" />
     </class>
 
 </hibernate-mapping>
