@@ -1,5 +1,6 @@
 package ibia.core.entities;
 
+import ibia.core.utils.Country;
 import ibia.core.utils.Id;
 
 /**
@@ -23,6 +24,10 @@ public class Delegate implements Entity {
 
     public String getType() {
         return type;
+    }
+
+    public boolean hasCustomDelegation() {
+        return Country.listByCode().contains(delegation);
     }
 
     /** GETTERS and SETTERS used by hibernate */
