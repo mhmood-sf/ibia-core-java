@@ -1,5 +1,7 @@
 package ibia.core.utils;
 
+import java.util.ArrayList;
+
 /**
  * Utility class for dealing with country names and flags.
  * All methods are static.
@@ -11,16 +13,16 @@ public class Country {
      * Returns list of the full names for all 249 territories
      * that have an officially assigned ISO 3166-1 code.
      */
-    public static String[] listbyName() {
-        return new String[0];
+    public static ArrayList<String> listbyName() {
+        return new ArrayList<>();
     }
 
     /**
      * Returns list of the alpha-2 codes for all 249 territories
      * that have an officially assigned ISO 3166-1 code.
      */
-    public static String[] listByCode() {
-        return new String[0];
+    public static ArrayList<String> listByCode() {
+        return new ArrayList<>();
     }
 
     /**
