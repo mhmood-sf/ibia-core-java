@@ -7,13 +7,13 @@ import ibia.core.entities.Entity;
 
 import java.util.Date;
 
-/*
+/**
  * Utility class for dealing with IDs used
  * for entities throughout the application.
  */
 public class Id implements IdentifierGenerator {
 
-    /*
+    /**
      * Custom ID generator for Entities. This method
      * is only for use by hibernate. If, for some reason,
      * you need to generate IDs for an Entity, see the
@@ -24,7 +24,7 @@ public class Id implements IdentifierGenerator {
         return Id.generate(entity.getType());
     }
 
-    /*
+    /**
      * Generates an ID based on the provided type,
      * used as a prefix for the ID.
      * type may be one of the following:
@@ -49,7 +49,7 @@ public class Id implements IdentifierGenerator {
         }
     }
 
-    /*
+    /**
      * Obtain the creation Date from a given ID.
      */
     public static Date createdAt(String id) throws Exception {
@@ -61,7 +61,7 @@ public class Id implements IdentifierGenerator {
         }
     }
 
-    /*
+    /**
      * Verify IDs.
      * Verification is done by checking the prefix
      * of the id, the timestamp, and the date it was

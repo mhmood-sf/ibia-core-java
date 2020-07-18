@@ -1,6 +1,6 @@
 package ibia.core.entities;
 
-/*
+/**
  * An interface representing any generic entity
  * that posesses a certain type and ID and represents
  * an aspect of a(n) MUN conference.

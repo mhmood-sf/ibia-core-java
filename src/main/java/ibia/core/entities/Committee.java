@@ -2,7 +2,7 @@ package ibia.core.entities;
 
 import ibia.core.utils.Id;
 
-/*
+/**
  * Represents a committee within a(n) MUN conference.
  */
 public class Committee implements Entity {
@@ -25,7 +25,7 @@ public class Committee implements Entity {
         return type;
     }
 
-    /* GETTERS and SETTERS used by hibernate */
+    /** GETTERS and SETTERS used by hibernate */
 
     public String getId() {
         return id;

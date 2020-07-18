@@ -2,7 +2,7 @@ package ibia.core.entities;
 
 import ibia.core.utils.Id;
 
-/*
+/**
  * Represents a(n) MUN conference.
  */
 public class Conference implements Entity {
@@ -29,7 +29,7 @@ public class Conference implements Entity {
         return status;
     }
 
-    /* GETTERS and SETTERS used by hibernate */
+    /** GETTERS and SETTERS used by hibernate */
 
     public String getId() {
         return id;

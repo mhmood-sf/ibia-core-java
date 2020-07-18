@@ -7,7 +7,7 @@ import ibia.core.entities.Conference;
 import ibia.core.entities.Delegate;
 
 public class Client {
-    /*
+    /**
      * Given the conference name, number of committees, and
      * number of delegates per committee, creates and persists
      * the conference instance, as well as the committees and
@@ -35,7 +35,7 @@ public class Client {
         return conf;
     }
 
-    /*
+    /**
      * Given the conference ID, returns the committees belonging
      * to that conference.
      */
@@ -43,7 +43,7 @@ public class Client {
         return DbDriver.findAll(Committee.class, c -> c.getConferenceId().equals(confId));
     }
 
-    /*
+    /**
      * Given the committee ID, returns the delegates belonging
      * to that committee.
      */

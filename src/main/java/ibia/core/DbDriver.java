@@ -16,7 +16,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-/*
+/***
  * Handles all database-related operations.
  * All methods are static.
  * Uses an embedded H2 database under the hood,
