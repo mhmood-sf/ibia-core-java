@@ -69,9 +69,7 @@ public class DbDriver {
     public static <T> void insertAll(List<T> entities) {
         Session session = openSession();
         session.beginTransaction();
-        for (T entity : entities) {
-            session.save(entity);
-        }
+        for (T entity : entities) session.save(entity);
         session.getTransaction().commit();
         session.close();
     }
@@ -89,9 +87,7 @@ public class DbDriver {
     public static <T> void updateAll(List<T> entities) {
         Session session = openSession();
         session.beginTransaction();
-        for (T entity : entities) {
-            session.update(entity);
-        }
+        for (T entity : entities) session.update(entity);
         session.getTransaction().commit();
         session.close();
     }
@@ -106,7 +102,11 @@ public class DbDriver {
     }
 
     public static <T> void deleteAll(List<T> entities) {
-        
+        Session session = openSession();
+        session.beginTransaction();
+        for (T entity : entities) session.delete(entity);
+        session.getTransaction().commit();
+        session.close();
     }
 
     // TODO: test
