@@ -1,7 +1,12 @@
 package ibia.core;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.function.Predicate;
+
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -47,19 +52,22 @@ public class DbDriver {
         return sessionFactory;
     }
 
-    // TODO: Proper transaction err handling (see docs for hover:Session)
+    private static Session openSession() {
+        return getSessionFactory().openSession();
+    }
+
+    // TODO: test
     public static <T> void insertOne(T entity) {
-        SessionFactory sf = getSessionFactory();
-        Session session = sf.openSession();
+        Session session = openSession();
         session.beginTransaction();
         session.save(entity);
         session.getTransaction().commit();
         session.close();
     }
 
-    public static <T> void insertAll(Collection<T> entities) {
-        SessionFactory sf = getSessionFactory();
-        Session session = sf.openSession();
+    // TODO: test
+    public static <T> void insertAll(List<T> entities) {
+        Session session = openSession();
         session.beginTransaction();
         for (T entity : entities) {
             session.save(entity);
@@ -68,45 +76,72 @@ public class DbDriver {
         session.close();
     }
 
-    // TODO: unimplemented
-    public static void updateOne() {
-
+    // TODO: test
+    public static <T> void updateOne(T entity) {
+        Session session = openSession();
+        session.beginTransaction();
+        session.update(entity);
+        session.getTransaction().commit();
+        session.close();
     }
 
-    public static void updateAll() {
-
+    // TODO: test
+    public static <T> void updateAll(List<T> entities) {
+        Session session = openSession();
+        session.beginTransaction();
+        for (T entity : entities) {
+            session.update(entity);
+        }
+        session.getTransaction().commit();
+        session.close();
     }
 
-    // TODO: unimplemented
-    public static void deleteOne() {
-
+    // TODO: test
+    public static <T> void deleteOne(T entity) {
+        Session session = openSession();
+        session.beginTransaction();
+        session.delete(entity);
+        session.getTransaction().commit();
+        session.close();
     }
 
-    public static void deleteAll() {
+    public static <T> void deleteAll(List<T> entities) {
         
     }
 
-    // TODO: test this + add proper err handling
-    public static <T> T findOne(Class<T> entityClass, String id) {
-        SessionFactory sf = getSessionFactory();
-        Session session = sf.openSession();
+    // TODO: test
+    public static <T> T fetchOne(Class<T> entityClass, String id) {
+        Session session = openSession();
         session.beginTransaction();
         T entity = (T)session.find(entityClass, id);
         return entity;
     }
 
-    // TODO: unimplemented
-    // fetches all rows for the given entity
-    public static <T> void findAll(Class<T> entityClass) {
+    // TODO: test
+    public static <T> List<T> fetchAll(Class<T> entityClass) {
+        Session session = openSession();
+        session.beginTransaction();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<T> cq = cb.createQuery(entityClass);
+        Root<T> rootEntry = cq.from(entityClass);
+        CriteriaQuery<T> all = cq.select(rootEntry);
 
+        TypedQuery<T> allQuery = session.createQuery(all);
+        List<T> results = allQuery.getResultList();
+        session.close();
+        return results;
     }
 
-    // TODO: unimplemented
+    // TODO: test
     // fetches all rows for the given entity,
     // and filters them with the given predicate
     // use predicate like filter.test(entity)
-    public static <T> void findAll(Class<T> entityClass, Predicate<T> filter) {
-
+    public static <T> T find(Class<T> entityClass, Predicate<T> filter) {
+        List<T> entities = fetchAll(entityClass);
+        for (T entity : entities) {
+            if (filter.test(entity)) return entity;
+        }
+        return null;
     }
 
     public static void shutdown() {
