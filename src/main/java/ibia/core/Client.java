@@ -39,15 +39,15 @@ public class Client {
      * Given the conference ID, returns the committees belonging
      * to that conference.
      */
-    public static ArrayList<Committee> getConferenceCommittees(String id) {
-        return new ArrayList<Committee>();
+    public static ArrayList<Committee> getConferenceCommittees(String confId) {
+        return DbDriver.findAll(Committee.class, c -> c.getConferenceId().equals(confId));
     }
 
     /*
      * Given the committee ID, returns the delegates belonging
      * to that committee.
      */
-    public static ArrayList<Delegate> getCommitteeDelegates(String id) {
-        return new ArrayList<Delegate>();
+    public static ArrayList<Delegate> getCommitteeDelegates(String comId) {
+        return DbDriver.findAll(Delegate.class, d -> d.getCommitteeId().equals(comId));
     }
 }
