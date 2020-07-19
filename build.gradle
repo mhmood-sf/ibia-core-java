@@ -18,17 +18,12 @@ repositories {
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api 'org.apache.commons:commons-math3:3.6.1'
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation 'com.google.guava:guava:28.0-jre'
     implementation 'org.hibernate:hibernate-core:5.4.16.Final'
     implementation 'com.google.code.gson:gson:2.8.6'
-
-    // i hope im choosing the right configuration??
-    compile 'com.h2database:h2:1.4.200'
-    compile 'javax.persistence:javax.persistence-api:2.2'
+    implementation 'com.h2database:h2:1.4.200'
+    implementation 'javax.persistence:javax.persistence-api:2.2'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
