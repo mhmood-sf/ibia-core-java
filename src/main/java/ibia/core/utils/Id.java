@@ -1,28 +1,12 @@
 package ibia.core.utils;
 
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.id.IdentifierGenerator;
-
-import ibia.core.entities.Entity;
-
 import java.util.Date;
 
 /**
  * Utility class for dealing with IDs used
  * for entities throughout the application.
  */
-public class Id implements IdentifierGenerator {
-
-    /**
-     * Custom ID generator for Entities. This method
-     * is only for use by hibernate. If, for some reason,
-     * you need to generate IDs for an Entity, see the
-     * static Id.generate method.
-     */
-    public String generate(SharedSessionContractImplementor ssci, Object obj) {
-        Entity entity = (Entity)obj;
-        return Id.generate(entity.getType());
-    }
+public class Id {
 
     /**
      * Generates an ID based on the provided type,
@@ -37,12 +21,12 @@ public class Id implements IdentifierGenerator {
      */
     public static String generate(String type) {
         String ts = Long.toString(System.currentTimeMillis());
-        switch (type) {
-            case "COM":
+        switch (type.toLowerCase()) {
+            case "com":
                 return "COM" + ts;
-            case "CON":
+            case "con":
                 return "CON" + ts;
-            case "DEL":
+            case "del":
                 return "DEL" + ts;
             default:
                 return "ENT" + ts;
