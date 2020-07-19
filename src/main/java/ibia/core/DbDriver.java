@@ -57,7 +57,6 @@ public class DbDriver {
         return getSessionFactory().openSession();
     }
 
-    // TODO: test
     public static <T> void insertOne(T entity) {
         Session session = openSession();
         session.beginTransaction();
@@ -66,7 +65,6 @@ public class DbDriver {
         session.close();
     }
 
-    // TODO: test
     public static <T> void insertAll(Collection<T> entities) {
         Session session = openSession();
         session.beginTransaction();
@@ -75,7 +73,6 @@ public class DbDriver {
         session.close();
     }
 
-    // TODO: test
     public static <T> void updateOne(T entity) {
         Session session = openSession();
         session.beginTransaction();
@@ -84,7 +81,6 @@ public class DbDriver {
         session.close();
     }
 
-    // TODO: test
     public static <T> void updateAll(Collection<T> entities) {
         Session session = openSession();
         session.beginTransaction();
@@ -93,7 +89,6 @@ public class DbDriver {
         session.close();
     }
 
-    // TODO: test
     public static <T> void deleteOne(T entity) {
         Session session = openSession();
         session.beginTransaction();
@@ -110,7 +105,6 @@ public class DbDriver {
         session.close();
     }
 
-    // TODO: test
     public static <T> T fetchOne(Class<T> entityClass, String id) {
         Session session = openSession();
         session.beginTransaction();
@@ -118,7 +112,6 @@ public class DbDriver {
         return entity;
     }
 
-    // TODO: test
     public static <T> ArrayList<T> fetchAll(Class<T> entityClass) {
         Session session = openSession();
         session.beginTransaction();
@@ -133,7 +126,6 @@ public class DbDriver {
         return results;
     }
 
-    // TODO: test
     public static <T> T findOne(Class<T> entityClass, Predicate<T> filter) {
         ArrayList<T> entities = fetchAll(entityClass);
         for (T entity : entities) {
@@ -142,7 +134,6 @@ public class DbDriver {
         return null;
     }
 
-    // TODO: test
     public static <T> ArrayList<T> findAll(Class<T> entityClass, Predicate<T> filter) {
         ArrayList<T> found = new ArrayList<>();
         ArrayList<T> entities = fetchAll(entityClass);
