@@ -26,6 +26,7 @@
         <property name="current_session_context_class">thread</property>
 
         <!-- Drop and re-create the database schema on startup -->
+        <!-- see: https://stackoverflow.com/q/438146/13034017 -->
         <property name="hbm2ddl.auto">create-drop</property>
 
         <!-- dbcp connection pool configuration -->
