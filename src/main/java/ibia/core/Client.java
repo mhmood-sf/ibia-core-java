@@ -8,10 +8,7 @@ import ibia.core.entities.Delegate;
 
 public class Client {
     /**
-     * Given the conference name, number of committees, and
-     * number of delegates per committee, creates and persists
-     * the conference instance, as well as the committees and
-     * delegates. Returns the conference instance created.
+     * Creates, persists and returns a new Conference.
      */
     public static Conference beginNewConference(String name) {
         Conference conf = new Conference(name);
@@ -19,6 +16,24 @@ public class Client {
         return conf;
     }
 
+    /**
+     * Creates, persists and returns a new Committee.
+     */
+    public static Committee beginNewCommittee(String name, String conferenceId) {
+        Committee com = new Committee(name, conferenceId);
+        DbDriver.insertOne(com);
+        return com;
+    }
+
+    /**
+     * Creates, persists and returns a new Delegate.
+     */
+    public static Delegate addNewDelegate(String name, String delegation, String committeeId) {
+        Delegate del = new Delegate(name, delegation, committeeId);
+        DbDriver.insertOne(del);
+        return del;
+    }
+    
     /**
      * Given the conference ID, returns the committees belonging
      * to that conference.
