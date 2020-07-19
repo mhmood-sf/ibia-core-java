@@ -27,7 +27,7 @@ public class Delegate implements Entity {
     }
 
     public boolean hasCustomDelegation() {
-        return Country.listByCode().contains(delegation);
+        return Country.listOfCodes().contains(delegation);
     }
 
     /** GETTERS and SETTERS used by hibernate */
