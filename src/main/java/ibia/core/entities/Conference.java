@@ -6,7 +6,7 @@ import ibia.core.utils.Id;
  * Represents a(n) MUN conference.
  */
 public class Conference implements Entity {
-    private final String type = "CON";
+    private final EntityType type = EntityType.CON;
     private String id;
     private String name;
     private int size;
@@ -15,13 +15,13 @@ public class Conference implements Entity {
     public Conference() {}
 
     public Conference(String name) {
-        this.id = Id.generate("con");
+        this.id = Id.generate(type);
         this.name = name;
         this.size = 0;
         this.status = true;
     }
 
-    public String getType() {
+    public EntityType getType() {
         return type;
     }
 

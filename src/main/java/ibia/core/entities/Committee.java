@@ -6,7 +6,7 @@ import ibia.core.utils.Id;
  * Represents a committee within a(n) MUN conference.
  */
 public class Committee implements Entity {
-    private final String type = "COM";
+    private final EntityType type = EntityType.COM;
     private String id;
     private String name;
     private int size;
@@ -15,13 +15,13 @@ public class Committee implements Entity {
     public Committee() {}
 
     public Committee(String name, String conferenceId) {
-        this.id = Id.generate("com");
+        this.id = Id.generate(type);
         this.name = name;
         this.size = 0;
         this.conferenceId = conferenceId;
     }
 
-    public String getType() {
+    public EntityType getType() {
         return type;
     }
 

@@ -7,7 +7,7 @@ import ibia.core.utils.Id;
  * Represents a delegate within a(n) MUN committee.
  */
 public class Delegate implements Entity {
-    private final String type = "DEL";
+    private final EntityType type = EntityType.DEL;
     private String id;
     private String name;
     private String delegation; // An alpha2 country code OR a custom delegation. The country code is used to fetch the flag icon.
@@ -16,13 +16,13 @@ public class Delegate implements Entity {
     public Delegate() {}
 
     public Delegate(String name, String delegation, String committeeId) {
-        this.id = Id.generate("del");
+        this.id = Id.generate(type);
         this.name = name;
         this.delegation = delegation;
         this.committeeId = committeeId;
     }
 
-    public String getType() {
+    public EntityType getType() {
         return type;
     }
 
