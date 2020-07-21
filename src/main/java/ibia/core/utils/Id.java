@@ -2,6 +2,8 @@ package ibia.core.utils;
 
 import java.util.Date;
 
+import ibia.core.entities.EntityType;
+
 /**
  * Utility class for dealing with IDs used
  * for entities throughout the application.
@@ -11,22 +13,18 @@ public class Id {
     /**
      * Generates an ID based on the provided type,
      * used as a prefix for the ID.
-     * type may be one of the following:
-     * "COM", for instances of a Committee
-     * "CON", for instances of a Conference
-     * "DEL", for instances of a Delegate.
      * 
-     * If an invalid type is provided, "ENT"
-     * is used as a prefix.
+     * @param type - The EntityType for which to generate an ID.
+     * @return An ID string
      */
-    public static String generate(String type) {
+    public static String generate(EntityType type) {
         String ts = Long.toString(System.currentTimeMillis());
-        switch (type.toLowerCase()) {
-            case "com":
+        switch (type) {
+            case COM:
                 return "COM" + ts;
-            case "con":
+            case CON:
                 return "CON" + ts;
-            case "del":
+            case DEL:
                 return "DEL" + ts;
             default:
                 return "ENT" + ts;
@@ -35,6 +33,9 @@ public class Id {
 
     /**
      * Obtain the creation Date from a given ID.
+     * 
+     * @param id - A valid ID string
+     * @return The Date when the ID was generated.
      */
     public static Date createdAt(String id) throws Exception {
         if (verify(id)) {
@@ -46,12 +47,13 @@ public class Id {
     }
 
     /**
-     * Verify IDs.
-     * Verification is done by checking the prefix
-     * of the id, the timestamp, and the date it was
-     * generated. Only ids generated between
-     * January 1, 2020 and the time this method is called
-     * are considered valid.
+     * Verifies IDs based on the following checks:
+     * - The prefix of the id is one of COM, CON, DEL or ENT
+     * - The suffix can be parsed into a valid Date object
+     * - The parsed Date is between January 1, 2020 and the current time.
+     * 
+     * @param id - The ID string to verify.
+     * @return true if all the checks passed, otherwise false.
      */
     public static boolean verify(String id) {
         String prefix = id.substring(0, 3);
