@@ -7,8 +7,12 @@ import ibia.core.entities.Conference;
 import ibia.core.entities.Delegate;
 
 public class Client {
+
     /**
-     * Creates, persists and returns a new Conference.
+     * Creates and persists a new Conference instance.
+     * 
+     * @param name - The name of the conference
+     * @return The created Conference instance
      */
     public static Conference beginNewConference(String name) {
         Conference conf = new Conference(name);
@@ -17,16 +21,24 @@ public class Client {
     }
 
     /**
-     * Creates, persists and returns a new Committee.
-     */
-    public static Committee beginNewCommittee(String name, String conferenceId) {
+     * Creates and persists a new Committee instance.
+     * 
+     * @param name - The name of the committee.
+     * @param conferenceId - The ID of the conference this committee belongs to.
+     * @return The created Committee instance.
+     */    public static Committee beginNewCommittee(String name, String conferenceId) {
         Committee com = new Committee(name, conferenceId);
         DbDriver.insertOne(com);
         return com;
     }
 
     /**
-     * Creates, persists and returns a new Delegate.
+     * Creates and persists a new Delegate instance.
+     * 
+     * @param name - The name of the delegate.
+     * @param delegation - Either a valid alpha2 code or some other custom delegation.
+     * @param committeeId - The ID of the committee this delegate belongs to.
+     * @return The created Conference instance.
      */
     public static Delegate addNewDelegate(String name, String delegation, String committeeId) {
         Delegate del = new Delegate(name, delegation, committeeId);
@@ -35,25 +47,33 @@ public class Client {
     }
 
     /**
-     * Returns all created conferences.
+     * Obtain a list of all persisted conferences.
+     * 
+     * @return - List of persisted Conference instances.
      */
     public static ArrayList<Conference> getAllConferences() {
         return DbDriver.fetchAll(Conference.class);
     }
     
     /**
-     * Given the conference ID, returns the committees belonging
-     * to that conference.
+     * Obtain a list of persisted committees belonging
+     * to a particular conference.
+     * 
+     * @param conferenceId - ID of the conference the committees belong to.
+     * @return List of persisted committee instances.
      */
-    public static ArrayList<Committee> getConferenceCommittees(String confId) {
-        return DbDriver.findAll(Committee.class, c -> c.getConferenceId().equals(confId));
+    public static ArrayList<Committee> getConferenceCommittees(String conferenceId) {
+        return DbDriver.findAll(Committee.class, c -> c.getConferenceId().equals(conferenceId));
     }
 
     /**
-     * Given the committee ID, returns the delegates belonging
-     * to that committee.
+     * Obtain a list of persisted delegates belonging
+     * to a particular committee.
+     * 
+     * @param committeeId - ID of the committee the delegates belong to.
+     * @return List of persisted delegate instances.
      */
-    public static ArrayList<Delegate> getCommitteeDelegates(String comId) {
-        return DbDriver.findAll(Delegate.class, d -> d.getCommitteeId().equals(comId));
+    public static ArrayList<Delegate> getCommitteeDelegates(String committeeId) {
+        return DbDriver.findAll(Delegate.class, d -> d.getCommitteeId().equals(committeeId));
     }
 }

@@ -12,6 +12,10 @@ public class Conference implements Entity {
     private int size;
     private boolean status;
 
+    /**
+     * This constructor is used internally by Hibernate
+     * and MUST NOT be used in client-facing code.
+     */
     public Conference() {}
 
     public Conference(String name) {
@@ -25,6 +29,13 @@ public class Conference implements Entity {
         return type;
     }
 
+    /**
+     * Whether the conference is ongoing (active) or not.
+     * The default value is true when a conference is
+     * instantiated.
+     * 
+     * @return true if the conference is active, otherwise false.
+     */
     public boolean isActive() {
         return status;
     }

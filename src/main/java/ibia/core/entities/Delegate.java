@@ -13,6 +13,10 @@ public class Delegate implements Entity {
     private String delegation; // An alpha2 country code OR a custom delegation. The country code is used to fetch the flag icon.
     private String committeeId;
 
+    /**
+     * This constructor is used internally by Hibernate
+     * and MUST NOT be used in client-facing code.
+     */
     public Delegate() {}
 
     public Delegate(String name, String delegation, String committeeId) {
@@ -26,8 +30,17 @@ public class Delegate implements Entity {
         return type;
     }
 
+    /**
+     * Check whether the delegate has a custom delegation
+     * or not. A delegation is considered custom if and
+     * only if its value is a valid alpha2 territory code.
+     * This check should be used to determine whether or
+     * not a flag icon is available for a delegation.
+     * 
+     * @return true if the delegation is custom, otherwise false.
+     */
     public boolean hasCustomDelegation() {
-        return Country.listOfCodes().contains(delegation);
+        return !Country.listOfCodes().contains(delegation);
     }
 
     /** GETTERS and SETTERS used by hibernate */

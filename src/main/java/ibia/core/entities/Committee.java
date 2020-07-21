@@ -12,6 +12,10 @@ public class Committee implements Entity {
     private int size;
     private String conferenceId;
 
+    /**
+     * This constructor is used internally by Hibernate
+     * and MUST NOT be used in client-facing code.
+     */
     public Committee() {}
 
     public Committee(String name, String conferenceId) {

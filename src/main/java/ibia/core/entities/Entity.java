@@ -6,7 +6,6 @@ package ibia.core.entities;
  * an aspect of a(n) MUN conference.
  */
 public interface Entity {
-    // get the type of entity
     public EntityType getType();
 
     // GETTERS and SETTERS used by hibernate
