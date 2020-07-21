@@ -33,6 +33,13 @@ public class Client {
         DbDriver.insertOne(del);
         return del;
     }
+
+    /**
+     * Returns all created conferences.
+     */
+    public static ArrayList<Conference> getAllConferences() {
+        return DbDriver.fetchAll(Conference.class);
+    }
     
     /**
      * Given the conference ID, returns the committees belonging
