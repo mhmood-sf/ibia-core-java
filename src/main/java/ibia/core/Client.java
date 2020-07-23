@@ -6,6 +6,12 @@ import ibia.core.entities.Committee;
 import ibia.core.entities.Conference;
 import ibia.core.entities.Delegate;
 
+// TODO: fix JavaDoc errors/warnings
+
+/**
+ * Provides a simple interface for interacting
+ * with the core backend.
+ */
 public class Client {
 
     /**
