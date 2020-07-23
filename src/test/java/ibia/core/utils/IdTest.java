@@ -3,13 +3,16 @@ package ibia.core.utils;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 import java.util.Date;
 
+import ibia.core.entities.EntityType;
+
 public class IdTest {
-    public String comId = Id.generate("COM");
-    public String conId = Id.generate("CON");
-    public String delId = Id.generate("DEL");
+    public String comId = Id.generate(EntityType.COM);
+    public String conId = Id.generate(EntityType.CON);
+    public String delId = Id.generate(EntityType.DEL);
 
     // To handle exception
     public IdTest() throws Exception {}
