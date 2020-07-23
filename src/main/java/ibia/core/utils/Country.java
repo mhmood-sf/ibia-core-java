@@ -66,7 +66,7 @@ public class Country {
      * Obtain a list of the full names for all 249 territories
      * that have an officially assigned ISO 3166-1 code.
      * 
-     * @return A list of names
+     * @return A list of names, or null if data is not available
      */
     public static ArrayList<String> listOfNames() {
         if (getData() == null) return null;
@@ -82,7 +82,7 @@ public class Country {
      * Obtain a list of the alpha-2 codes for all 249 territories
      * that have an officially assigned ISO 3166-1 code.
      * 
-     * @return A list of alpha2 codes
+     * @return A list of alpha2 codes, or null if data is not available
      */
     public static ArrayList<String> listOfCodes() {
         if (getData() == null) return null;
@@ -104,7 +104,7 @@ public class Country {
     public static String codeFromName(String name) {
         if (getData() == null) return null;
         for (CountryData country : getData()) {
-            if (country.alpha2.equals(name)) return country.alpha2;
+            if (country.name.equals(name)) return country.alpha2;
         }
         return null;
     }
@@ -119,7 +119,7 @@ public class Country {
     public static String nameFromCode(String code) {
         if (getData() == null) return null;
         for (CountryData country : getData()) {
-            if (country.name.equals(code)) return country.name;
+            if (country.alpha2.equals(code)) return country.name;
         }
         return null;
     }
