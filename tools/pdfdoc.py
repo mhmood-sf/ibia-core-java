@@ -1,6 +1,8 @@
 # Script for generating documentation in
 # PDF format instead of JavaDoc's default
 # HTML.
+#
+# See: http://pdfdoclet.sourceforge.net/running.html
 
 import sys
 from os import system as exec
