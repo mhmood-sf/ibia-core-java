@@ -7,6 +7,7 @@ import ibia.core.entities.Conference;
 import ibia.core.entities.Delegate;
 
 // TODO: fix JavaDoc errors/warnings
+// TODO: consistent naming for the get<Conf/Comm><Comm/Dels>() methods
 
 /**
  * Provides a simple interface for interacting
