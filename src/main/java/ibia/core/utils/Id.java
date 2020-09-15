@@ -47,10 +47,11 @@ public class Id {
     }
 
     /**
-     * Verifies IDs based on the following checks:
-     * - The prefix of the id is one of COM, CON, DEL or ENT
-     * - The suffix can be parsed into a valid Date object
-     * - The parsed Date is between January 1, 2020 and the current time.
+     * Verifies IDs based on the following checks:<br><br>
+     * 
+     * - The prefix of the id is one of COM, CON, DEL or ENT.<br><br>
+     * - The suffix can be parsed into a valid Date object.<br><br>
+     * - The parsed Date is between January 1, 2020 and the current time.<br><br>
      * 
      * @param id - The ID string to verify.
      * @return true if all the checks passed, otherwise false.

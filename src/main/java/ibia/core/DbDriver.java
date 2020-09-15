@@ -60,7 +60,7 @@ public class DbDriver {
     /**
      * Persist an entity to the database.
      * 
-     * @param <T> - The type of Entity to be persisted.
+     * @param T - The type of Entity to be persisted.
      * @param entity - The entity to be persisted.
      */
     public static <T> void insertOne(T entity) {
@@ -75,7 +75,7 @@ public class DbDriver {
      * Persist a collection of entities
      * to the database.
      * 
-     * @param <T> - The type of Entity to be persisted.
+     * @param T - The type of Entity to be persisted.
      * @param entities - The collection of entities to be persisted.
      */
     public static <T> void insertAll(Collection<T> entities) {
@@ -89,7 +89,7 @@ public class DbDriver {
     /**
      * Update a persisted entity.
      * 
-     * @param <T> - The type of Entity to be updated.
+     * @param T - The type of Entity to be updated.
      * @param entity - The updated entity.
      */
     public static <T> void updateOne(T entity) {
@@ -103,7 +103,7 @@ public class DbDriver {
     /**
      * Update a collection of persisted entities.
      * 
-     * @param <T> - The type of Entity to be updated.
+     * @param T - The type of Entity to be updated.
      * @param entities - The collection of updated entities.
      */
     public static <T> void updateAll(Collection<T> entities) {
@@ -117,7 +117,7 @@ public class DbDriver {
     /**
      * Delete an entity from the database.
      * 
-     * @param <T> - The type of Entity to be deleted.
+     * @param T - The type of Entity to be deleted.
      * @param entity - The entity to be deleted.
      */
     public static <T> void deleteOne(T entity) {
@@ -131,7 +131,7 @@ public class DbDriver {
     /**
      * Delete a collection of entities from the database.
      * 
-     * @param <T> - The type of Entity to be deleted.
+     * @param T - The type of Entity to be deleted.
      * @param entities - The collection of entities to be deleted.
      */
     public static <T> void deleteAll(Collection<T> entities) {
@@ -145,7 +145,7 @@ public class DbDriver {
     /**
      * Fetch/read a persisted entity from the database.
      * 
-     * @param <T> - The type of Entity to be fetched.
+     * @param T - The type of Entity to be fetched.
      * @param entityclass - The Class of the entity to be fetched.
      * @param id - The ID of the entity being fetched.
      * @return The fetched entity, or null if the entity does not exist.
@@ -161,7 +161,7 @@ public class DbDriver {
      * Fetch/read all persisted entities of a particular
      * type from the database.
      * 
-     * @param <T> - The type of entity to be fetched.
+     * @param T - The type of entity to be fetched.
      * @param entityClass - The Class of the entities being fetched.
      * @return List of fetched entities, or null if none were found.
      */
@@ -215,7 +215,7 @@ public class DbDriver {
      *     );
      * </pre>
      * 
-     * @param <T> - The type of entity to be fetched.
+     * @param T - The type of entity to be fetched.
      * @param entityClass - The Class of the entities being fetched
      * @param filter - The predicate for searching through the entities.
      * @return List of entities found to satisfy the predicate, or null if none were found.

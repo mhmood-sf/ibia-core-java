@@ -40,7 +40,7 @@ public class Conference implements Entity {
         return status;
     }
 
-    /** GETTERS and SETTERS used by hibernate */
+    /* GETTERS and SETTERS used by hibernate */
 
     public String getId() {
         return id;

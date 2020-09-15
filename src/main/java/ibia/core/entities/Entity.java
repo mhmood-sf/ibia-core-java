@@ -8,7 +8,7 @@ package ibia.core.entities;
 public interface Entity {
     public EntityType getType();
 
-    // GETTERS and SETTERS used by hibernate
+    /* GETTERS and SETTERS used by hibernate */
     public String getId();
     public void setId(String id);
 

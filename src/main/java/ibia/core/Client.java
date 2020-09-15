@@ -55,7 +55,7 @@ public class Client {
     /**
      * Obtain a list of all persisted conferences.
      * 
-     * @return - List of persisted Conference instances.
+     * @return List of persisted Conference instances.
      */
     public static ArrayList<Conference> getAllConferences() {
         return DbDriver.fetchAll(Conference.class);

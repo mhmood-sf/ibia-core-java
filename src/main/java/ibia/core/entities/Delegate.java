@@ -43,7 +43,7 @@ public class Delegate implements Entity {
         return !Country.listOfCodes().contains(delegation);
     }
 
-    /** GETTERS and SETTERS used by hibernate */
+    /* GETTERS and SETTERS used by hibernate */
 
     public String getId() {
         return id;

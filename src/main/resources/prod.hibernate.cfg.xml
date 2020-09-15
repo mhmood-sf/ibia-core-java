@@ -25,7 +25,7 @@
         <!-- Set the current session context -->
         <property name="current_session_context_class">thread</property>
 
-        <!-- Drop and re-create the database schema on startup -->
+        <!-- Update schema on startup -->
         <!-- see: https://stackoverflow.com/q/438146/13034017 -->
         <property name="hbm2ddl.auto">update</property>
 
