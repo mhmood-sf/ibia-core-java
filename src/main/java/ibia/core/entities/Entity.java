@@ -3,7 +3,8 @@ package ibia.core.entities;
 /**
  * An interface representing any generic entity
  * that posesses a certain type and ID and represents
- * an aspect of a(n) MUN conference.
+ * an aspect of a(n) MUN conference. NOTE that these
+ * entities do NOT refer to Hibernate entities.
  */
 public interface Entity {
     public EntityType getType();
