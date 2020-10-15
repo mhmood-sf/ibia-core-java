@@ -5,12 +5,17 @@ package ibia.core.utils;
  * <br><br>
  * This class is also a Hibernate entity.
  */
-class Topic {
+public class Topic {
     private int id;
     private String committeeId;
     private String topic;
 
     public Topic() {}
+
+    public Topic(String committeeId, String topic) {
+        this.committeeId = committeeId;
+        this.topic = topic;
+    }
 
     public int getId() {
         return id;

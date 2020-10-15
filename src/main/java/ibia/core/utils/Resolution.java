@@ -5,13 +5,19 @@ package ibia.core.utils;
  * <br><br>
  * This class is also a Hibernate entity.
  */
-class Resolutions {
+public class Resolution {
     private int id;
     private String mainSubmitter;
     private int topicId;
     private boolean passed;
 
-    public Resolutions() {}
+    public Resolution() {}
+
+    public Resolution(String mainSubmitter, int topicId) {
+        this.mainSubmitter = mainSubmitter;
+        this.topicId = topicId;
+        this.passed = false;
+    }
 
     public int getId() {
         return id;
