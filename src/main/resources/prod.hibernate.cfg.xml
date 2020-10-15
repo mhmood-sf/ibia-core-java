@@ -40,6 +40,8 @@
         <mapping resource="mappings/Delegate.hbm.xml" />
         <mapping resource="mappings/Conference.hbm.xml" />
         <mapping resource="mappings/Committee.hbm.xml" />
+        <mapping resource="mappings/Resolution.hbml.xml" />
+        <mapping resource="mappings/Topic.hbm.xml" />
 
     </session-factory>
 
