@@ -1,5 +1,7 @@
 package ibia.core.entities;
 
+import java.util.Date;
+
 import ibia.core.utils.Id;
 
 /**
@@ -10,6 +12,7 @@ public class Conference implements Entity {
     private String id;
     private String name;
     private boolean ongoing;
+    private Date created;
 
     /**
      * This constructor is used internally by Hibernate
@@ -21,6 +24,7 @@ public class Conference implements Entity {
         this.id = Id.generate(type);
         this.name = name;
         this.ongoing = true;
+        this.created = new Date();
     }
 
     public EntityType getType() {
@@ -62,5 +66,13 @@ public class Conference implements Entity {
 
     public void setOngoing(boolean ongoing) {
         this.ongoing = ongoing;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
     }
 }

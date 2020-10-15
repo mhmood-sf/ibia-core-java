@@ -13,6 +13,7 @@
         <id name="id" type="java.lang.String" column="ID"/>
         <property name="name" type="java.lang.String" column="NAME"/>
         <property name="ongoing" type="boolean" column="ONGOING"/>
+        <property name="created" type="java.util.Date" column="CREATED"/>
     </class>
 
 </hibernate-mapping>
