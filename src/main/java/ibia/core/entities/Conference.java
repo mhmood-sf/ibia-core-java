@@ -9,8 +9,7 @@ public class Conference implements Entity {
     private final EntityType type = EntityType.CON;
     private String id;
     private String name;
-    private int size;
-    private boolean status;
+    private boolean ongoing;
 
     /**
      * This constructor is used internally by Hibernate
@@ -21,8 +20,7 @@ public class Conference implements Entity {
     public Conference(String name) {
         this.id = Id.generate(type);
         this.name = name;
-        this.size = 0;
-        this.status = true;
+        this.ongoing = true;
     }
 
     public EntityType getType() {
@@ -36,8 +34,8 @@ public class Conference implements Entity {
      * 
      * @return true if the conference is active, otherwise false.
      */
-    public boolean isActive() {
-        return status;
+    public boolean isOngoing() {
+        return ongoing;
     }
 
     /* GETTERS and SETTERS used by hibernate */
@@ -58,19 +56,11 @@ public class Conference implements Entity {
         this.name = name;
     }
 
-    public int getSize() {
-        return size;
+    public boolean getOngoing() {
+        return ongoing;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setOngoing(boolean ongoing) {
+        this.ongoing = ongoing;
     }
 }

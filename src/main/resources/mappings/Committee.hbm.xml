@@ -12,7 +12,6 @@
     <class name="Committee" table="COMMITTEES">
         <id name="id" type="java.lang.String" column="ID"/>
         <property name="name" type="java.lang.String" column="NAME"/>
-        <property name="size" type="int" column="SIZE"/>
         <property name="conferenceId" type="java.lang.String" column="CONFERENCE_ID"/>
     </class>
 

@@ -12,8 +12,7 @@
     <class name="Conference" table="CONFERENCES">
         <id name="id" type="java.lang.String" column="ID"/>
         <property name="name" type="java.lang.String" column="NAME"/>
-        <property name="size" type="int" column="SIZE"/>
-        <property name="status" type="boolean" column="STATUS"/>
+        <property name="ongoing" type="boolean" column="ONGOING"/>
     </class>
 
 </hibernate-mapping>

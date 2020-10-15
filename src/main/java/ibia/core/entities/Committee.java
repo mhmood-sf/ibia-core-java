@@ -9,7 +9,6 @@ public class Committee implements Entity {
     private final EntityType type = EntityType.COM;
     private String id;
     private String name;
-    private int size;
     private String conferenceId;
 
     /**
@@ -21,7 +20,6 @@ public class Committee implements Entity {
     public Committee(String name, String conferenceId) {
         this.id = Id.generate(type);
         this.name = name;
-        this.size = 0;
         this.conferenceId = conferenceId;
     }
 
@@ -45,14 +43,6 @@ public class Committee implements Entity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 
     public String getConferenceId() {

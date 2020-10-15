@@ -12,6 +12,11 @@ public class Delegate implements Entity {
     private String name;
     private String delegation; // An alpha2 country code OR a custom delegation. The country code is used to fetch the flag icon.
     private String committeeId;
+    private int speeches;
+    private int pois;
+    private int motions;
+    private int time;
+    private int amendments;
 
     /**
      * This constructor is used internally by Hibernate
@@ -24,6 +29,11 @@ public class Delegate implements Entity {
         this.name = name;
         this.delegation = delegation;
         this.committeeId = committeeId;
+        this.speeches = 0;
+        this.pois = 0;
+        this.motions = 0;
+        this.time = 0;
+        this.amendments = 0;
     }
 
     public EntityType getType() {
@@ -75,5 +85,45 @@ public class Delegate implements Entity {
 
     public void setCommitteeId(String committeeId) {
         this.committeeId = committeeId;
+    }
+
+    public int getSpeeches() {
+        return speeches;
+    }
+
+    public void setSpeeches(int speeches) {
+        this.speeches = speeches;
+    }
+
+    public int getPois() {
+        return pois;
+    }
+
+    public void setPois(int pois) {
+        this.pois = pois;
+    }
+
+    public int getMotions() {
+        return motions;
+    }
+
+    public void setMotions(int motions) {
+        this.motions = motions;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public int getAmendments() {
+        return amendments;
+    }
+
+    public void setAmendments(int amendments) {
+        this.amendments = amendments;
     }
 }
