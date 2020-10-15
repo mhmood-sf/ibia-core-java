@@ -2,12 +2,15 @@ package ibia.core.utils;
 
 import java.io.File;
 import java.io.InputStream;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import java.net.URL;
 import java.util.ArrayList;
 
+import ibia.core.Log;
 import com.google.gson.Gson;
 
 /**
@@ -53,8 +56,7 @@ public class Country {
 
                 data = new Gson().fromJson(json, CountryData[].class);
             } catch (Exception e) {
-                // TODO: proper, graceful error handling.
-                System.err.println(e);
+                Log.error(e.getMessage());
                 data = null; // Set data back to null to try again on the next call.
                 return null;
             }
