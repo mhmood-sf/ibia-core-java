@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ibia.core.utils">
+
+    <class name="Resolution" table="RESOLUTIONS">
+        <id name="id" type="int" column="ID"/>
+        <property name="mainSubmitter" type="java.lang.String" column="MAIN_SUBMITTER"/>
+        <property name="topicId" type="int" column="TOPIC_ID"/>
+        <property name="passed" type="boolean" column="PASSED"/>
+    </class>
+
+</hibernate-mapping>
