@@ -196,8 +196,10 @@ public class DbDriver {
      */
     public static <T> T findOne(Class<T> entityClass, Predicate<T> filter) {
         ArrayList<T> entities = fetchAll(entityClass);
-        for (T entity : entities) {
-            if (filter.test(entity)) return entity;
+        if (entities != null) {
+            for (T entity : entities) {
+                if (filter.test(entity)) return entity;
+            }
         }
         return null;
     }
@@ -223,8 +225,10 @@ public class DbDriver {
     public static <T> ArrayList<T> findAll(Class<T> entityClass, Predicate<T> filter) {
         ArrayList<T> found = new ArrayList<>();
         ArrayList<T> entities = fetchAll(entityClass);
-        for (T entity : entities) {
-            if (filter.test(entity)) found.add(entity);
+        if (entities != null) {
+            for (T entity : entities) {
+                if (filter.test(entity)) found.add(entity);
+            }
         }
         return found.size() > 0 ? found : null;
     }
