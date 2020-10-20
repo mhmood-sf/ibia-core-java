@@ -154,6 +154,7 @@ public class DbDriver {
         Session session = openSession();
         session.beginTransaction();
         T entity = (T)session.find(entityClass, id);
+        session.close();
         return entity;
     }
 
