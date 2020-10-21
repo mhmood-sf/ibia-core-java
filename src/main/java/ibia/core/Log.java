@@ -33,17 +33,17 @@ public class Log {
     }
 
     public static void info(String msg) {
-        msg = "[ibia | INFO] " + msg;
+        msg = "[ibia] " + msg;
         getLogger().info(msg);
     }
 
     public static void warn(String msg) {
-        msg = "[ibia | WARN] " + msg;
+        msg = "[ibia] " + msg;
         getLogger().log(Level.WARNING, msg);
     }
 
     public static void error(String msg) {
-        msg = "[ibia | ERROR] " + msg;
+        msg = "[ibia] " + msg;
         getLogger().log(Level.SEVERE, msg);
     }
 
