@@ -1,31 +1,30 @@
 package ibia.core;
 
-import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  * Logging utility.
  */
 public class Log {
     private static Logger logger;
+    private static Handler handler;
 
-    public static void init() throws IOException {
-        Handler handler = new FileHandler("data/ibia.log.xml");
-        logger.addHandler(handler);
-    }
-
-    private static Logger getLogger() {
+    public static Logger getLogger() {
         if (logger == null) {
             logger = Logger.getLogger("");
-
+            // for efficiency, do not log to console.
+            logger.setUseParentHandlers(false);
             try {
-                Handler handler = new FileHandler("data/ibia.log.xml");
+                SimpleFormatter fmt = new SimpleFormatter();
+                handler = new FileHandler("data/ibia.log");
+                handler.setFormatter(fmt);
                 logger.addHandler(handler);
             } catch (Exception e) {
-                System.out.println("[ibia | WARN] Failed to access log file (ibia.log.xml).");
+                System.out.println("[ibia | WARN] Failed to access log file (ibia.log).");
                 System.out.println("[ibia | WARN] All log messages will be printed to console for this session.");
             }
         }
@@ -46,5 +45,9 @@ public class Log {
     public static void error(String msg) {
         msg = "[ibia | ERROR] " + msg;
         getLogger().log(Level.SEVERE, msg);
+    }
+
+    public static Handler getHandler() {
+        return logger.getHandlers()[0];
     }
 }
