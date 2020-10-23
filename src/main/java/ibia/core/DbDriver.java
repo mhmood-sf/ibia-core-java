@@ -129,6 +129,18 @@ public class DbDriver {
     }
 
     /**
+     * Delete an entity from the database
+     * using the id
+     * @param <T> type of entity to be deleted
+     * @param entityClass
+     * @param id
+     */
+    public static <T> void deleteById(Class<T> entityClass, String id) {
+        T entity = DbDriver.fetchOne(entityClass, id);
+        deleteOne(entity);
+    }
+
+    /**
      * Delete a collection of entities from the database.
      * 
      * @param T - The type of Entity to be deleted.
