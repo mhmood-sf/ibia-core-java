@@ -3,8 +3,6 @@ package ibia.core.utils;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -36,9 +34,7 @@ public class CountryTest {
         assertTrue(name.equals("Antarctica"));
     }
 
-    @Test public void testFlagPath() {
-        Path path = Country.flagPath("aq");
-        Path actual = Paths.get("world-countries", "flags", "64x64", "aq.png");
-        assertTrue(path.equals(actual));
+    @Test public void testGetFlag() {
+        Country.getFlag("aq");
     }
 }

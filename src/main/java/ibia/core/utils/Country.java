@@ -2,11 +2,12 @@ package ibia.core.utils;
 
 import java.io.File;
 import java.io.InputStream;
-
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -49,14 +50,21 @@ public class Country {
     public static CountryData[] getData() {
         if (data == null) {
             try {
-                URL resource = Country.class.getClassLoader().getResource(dataPath);
-                File file = new File(resource.getFile());
-                byte[] raw = Files.readAllBytes(file.toPath());
-                String json = new String(raw);
+                ClassLoader classLoader = Country.class.getClassLoader();
+                InputStream stream = classLoader.getResourceAsStream(dataPath);
+                
+                int b;
+                StringBuilder str = new StringBuilder();
+                while ((b = stream.read()) != -1) {
+                    str.append((char)b);
+                }
 
+                stream.close();
+                String json = str.toString();
                 data = new Gson().fromJson(json, CountryData[].class);
             } catch (Exception e) {
                 Log.error(e.getMessage());
+                e.printStackTrace();
                 data = null; // Set data back to null to try again on the next call.
                 return null;
             }
@@ -133,10 +141,13 @@ public class Country {
      * @param code - An alpha2 code
      * @return The path to the flag, or null if an invalid code is given.
      */
-    public static Path flagPath(String code) {
+    public static InputStream getFlag(String code) {
         if (listOfCodes().contains(code)) {
             String fileName = code.toLowerCase() + ".png";
-            return Paths.get("world-countries", "flags", "64x64", fileName);
+            String resource = "world-countries/flags/64x64/" + fileName;
+            InputStream flag = Country.class.getClassLoader().getResourceAsStream(resource);
+
+            return flag;
         }
         return null;
     }
