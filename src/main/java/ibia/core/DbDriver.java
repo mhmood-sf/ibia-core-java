@@ -135,7 +135,7 @@ public class DbDriver {
      * @param entityClass
      * @param id
      */
-    public static <T> void deleteById(Class<T> entityClass, String id) {
+    public static <T> void deleteById(Class<T> entityClass, Object id) {
         T entity = DbDriver.fetchOne(entityClass, id);
         deleteOne(entity);
     }
@@ -162,7 +162,7 @@ public class DbDriver {
      * @param id - The ID of the entity being fetched.
      * @return The fetched entity, or null if the entity does not exist.
      */
-    public static <T> T fetchOne(Class<T> entityClass, String id) {
+    public static <T> T fetchOne(Class<T> entityClass, Object id) {
         Session session = openSession();
         session.beginTransaction();
         T entity = (T)session.find(entityClass, id);
