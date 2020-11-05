@@ -10,7 +10,9 @@
 <hibernate-mapping package="ibia.core.utils">
 
     <class name="Topic" table="TOPICS">
-        <id name="id" type="int" column="ID"/>
+        <id name="id" type="int" column="ID">
+          <generator class="native"/>
+        </id>
         <property name="topic" type="java.lang.String" column="TOPIC"/>
         <property name="committeeId" type="java.lang.String" column="COMMITTEE_ID"/>
     </class>

@@ -10,7 +10,9 @@
 <hibernate-mapping package="ibia.core.utils">
 
     <class name="Resolution" table="RESOLUTIONS">
-        <id name="id" type="int" column="ID"/>
+        <id name="id" type="int" column="ID">
+          <generator class="native"/>
+        </id>
         <property name="mainSubmitter" type="java.lang.String" column="MAIN_SUBMITTER"/>
         <property name="topicId" type="int" column="TOPIC_ID"/>
         <property name="passed" type="boolean" column="PASSED"/>
