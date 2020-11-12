@@ -1,6 +1,7 @@
 package ibia.core;
 
 import java.io.File;
+import java.nio.file.FileSystems;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -17,24 +18,28 @@ public class Log {
     public static Logger getLogger() {
         if (logger == null) {
             logger = Logger.getLogger("");
-            logger.setUseParentHandlers(false); // do not log to parents, for efficiency
+            logger.setUseParentHandlers(false); // No need to send output to parent loggers
 
             try {
                 // Create the file if it doesn't exist
-                File file = new File("data/ibia.log");
-                if (!file.isFile()) file.createNewFile();
+                String path = getLogFilePath();
+                File file = new File(path);
+                if (!file.isFile()) {
+                    file.getParentFile().mkdirs();
+                    file.createNewFile();
+                }
 
                 // Set the formatter and add handler to logger
                 SimpleFormatter fmt = new SimpleFormatter();
-                handler = new FileHandler("data/ibia.log", true);
+                handler = new FileHandler(path, true);
                 handler.setFormatter(fmt);
                 logger.addHandler(handler);
 
                 // Indicate a new log session is starting.
-                info("===== SESSION START =====");
+                info("= = = = = SESSION START = = = = =");
             } catch (Exception e) {
-                System.out.println("WARN: [ibia] Failed to access log file (ibia.log).");
-                System.out.println("WARN: [ibia] All log messages will be printed to console for this session.");
+                e.printStackTrace();
+                System.out.println("WARN: [ibia] Failed to access log file (data/ibia.log).");
             }
         }
 
@@ -58,5 +63,17 @@ public class Log {
 
     public static Handler getHandler() {
         return logger.getHandlers()[0];
+    }
+
+    /**
+     * @return the absolute path for the log file.
+     */
+    public static String getLogFilePath() {
+        // Current Working Directory
+        String cwd = System.getProperty("user.dir");
+        // Join paths to form the absolute path for the Log file.
+        // This should be the same as the ibia.db file created by Hibernate.
+        String path = FileSystems.getDefault().getPath(cwd, "data", "ibia.log").toString();
+        return path;
     }
 }
