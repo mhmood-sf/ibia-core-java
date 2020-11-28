@@ -3,7 +3,7 @@ package ibia.core.entities;
 import ibia.core.utils.Id;
 
 /**
- * Represents a committee within a(n) MUN conference.
+ * Represents a committee within an MUN conference.
  */
 public class Committee implements Entity {
     private final EntityType type = EntityType.COM;

@@ -60,8 +60,8 @@ public class DbDriver {
     /**
      * Persist an entity to the database.
      * 
-     * @param T - The type of Entity to be persisted.
-     * @param entity - The entity to be persisted.
+     * @param <T> type of Entity to be persisted.
+     * @param entity entity to be persisted.
      */
     public static <T> void insertOne(T entity) {
         Session session = openSession();
@@ -75,8 +75,8 @@ public class DbDriver {
      * Persist a collection of entities
      * to the database.
      * 
-     * @param T - The type of Entity to be persisted.
-     * @param entities - The collection of entities to be persisted.
+     * @param <T> type of Entity to be persisted.
+     * @param entities collection of entities to be persisted.
      */
     public static <T> void insertAll(Collection<T> entities) {
         Session session = openSession();
@@ -89,8 +89,8 @@ public class DbDriver {
     /**
      * Update a persisted entity.
      * 
-     * @param T - The type of Entity to be updated.
-     * @param entity - The updated entity.
+     * @param <T> type of Entity to be updated.
+     * @param entity updated entity.
      */
     public static <T> void updateOne(T entity) {
         Session session = openSession();
@@ -103,8 +103,8 @@ public class DbDriver {
     /**
      * Update a collection of persisted entities.
      * 
-     * @param T - The type of Entity to be updated.
-     * @param entities - The collection of updated entities.
+     * @param <T> type of Entity to be updated.
+     * @param entities collection of updated entities.
      */
     public static <T> void updateAll(Collection<T> entities) {
         Session session = openSession();
@@ -117,8 +117,8 @@ public class DbDriver {
     /**
      * Delete an entity from the database.
      * 
-     * @param T - The type of Entity to be deleted.
-     * @param entity - The entity to be deleted.
+     * @param <T> type of Entity to be deleted.
+     * @param entity entity to be deleted.
      */
     public static <T> void deleteOne(T entity) {
         Session session = openSession();
@@ -132,8 +132,8 @@ public class DbDriver {
      * Delete an entity from the database
      * using the id
      * @param <T> type of entity to be deleted
-     * @param entityClass
-     * @param id
+     * @param entityClass Class of the entity to be deleted
+     * @param id id of the entity to be deleted
      */
     public static <T> void deleteById(Class<T> entityClass, Object id) {
         T entity = DbDriver.fetchOne(entityClass, id);
@@ -143,8 +143,8 @@ public class DbDriver {
     /**
      * Delete a collection of entities from the database.
      * 
-     * @param T - The type of Entity to be deleted.
-     * @param entities - The collection of entities to be deleted.
+     * @param <T> type of Entity to be deleted.
+     * @param entities collection of entities to be deleted.
      */
     public static <T> void deleteAll(Collection<T> entities) {
         Session session = openSession();
@@ -157,10 +157,10 @@ public class DbDriver {
     /**
      * Fetch/read a persisted entity from the database.
      * 
-     * @param T - The type of Entity to be fetched.
-     * @param entityclass - The Class of the entity to be fetched.
-     * @param id - The ID of the entity being fetched.
-     * @return The fetched entity, or null if the entity does not exist.
+     * @param <T> type of Entity to be fetched.
+     * @param entityClass Class of the entity to be fetched.
+     * @param id ID of the entity being fetched.
+     * @return the fetched entity, or null if the entity does not exist.
      */
     public static <T> T fetchOne(Class<T> entityClass, Object id) {
         Session session = openSession();
@@ -174,9 +174,9 @@ public class DbDriver {
      * Fetch/read all persisted entities of a particular
      * type from the database.
      * 
-     * @param T - The type of entity to be fetched.
-     * @param entityClass - The Class of the entities being fetched.
-     * @return List of fetched entities, or null if none were found.
+     * @param <T> type of entity to be fetched.
+     * @param entityClass Class of the entities being fetched.
+     * @return ArrayList of fetched entities, or null if none were found.
      */
     public static <T> ArrayList<T> fetchAll(Class<T> entityClass) {
         Session session = openSession();
@@ -195,17 +195,12 @@ public class DbDriver {
     /**
      * Fetches all entities of a particular type and
      * finds the first one satisfying a given predicate.
-     * <br><br>
      * For example, to find a delegate with the name "ABC":
-     * <pre>
-     * Delegate abc = DbDriver.findOne(Delegate.class,
-     *     del -> del.getName().equals("ABC"));
-     * </pre>
      * 
-     * @param <T> - The type of entity to be fetched.
-     * @param entityClass - The Class of the entities being fetched.
-     * @param filter - The predicate for searching through the fetched entities
-     * @return The first entity found to satisfy the predicate, or null if none were found.
+     * @param <T> type of entity to be fetched.
+     * @param entityClass Class of the entities being fetched.
+     * @param filter predicate for searching through the fetched entities.
+     * @return the first entity found to satisfy the predicate, or null if none were found.
      */
     public static <T> T findOne(Class<T> entityClass, Predicate<T> filter) {
         ArrayList<T> entities = fetchAll(entityClass);
@@ -220,20 +215,11 @@ public class DbDriver {
     /**
      * Fetches all entities of a particular type and
      * finds all that satisfy a given predicate.
-     * <br><br>
-     * For example, to find all Delegates representing Antarctica:
-     * <pre>
-     * String code = Country.codeFromName("Antarctica");
-     * ArrayList<Delegate> antarcticaDelegates = 
-     *     DbDriver.findAll(Delegate.class,
-     *         del -> del.getDelegation().equals(code)
-     *     );
-     * </pre>
      * 
-     * @param T - The type of entity to be fetched.
-     * @param entityClass - The Class of the entities being fetched
-     * @param filter - The predicate for searching through the entities.
-     * @return List of entities found to satisfy the predicate, or null if none were found.
+     * @param <T> type of entity to be fetched.
+     * @param entityClass Class of the entities being fetched.
+     * @param filter predicate for searching through the entities.
+     * @return ArrayList of entities found to satisfy the predicate, or null if none were found.
      */
     public static <T> ArrayList<T> findAll(Class<T> entityClass, Predicate<T> filter) {
         ArrayList<T> found = new ArrayList<>();

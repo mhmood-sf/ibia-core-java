@@ -34,15 +34,16 @@ public class Id {
     /**
      * Obtain the creation Date from a given ID.
      * 
-     * @param id - A valid ID string
+     * @param id A valid ID string
      * @return The Date when the ID was generated.
+     * @throws IllegalArgumentException - if an invalid ID is provided
      */
-    public static Date createdAt(String id) throws Exception {
+    public static Date createdAt(String id) throws IllegalArgumentException {
         if (verify(id)) {
             Long ts = Long.parseLong(id.substring(3));
             return new Date(ts);
         } else {
-            throw new Exception("Invalid ID provided.");
+            throw new IllegalArgumentException("Invalid ID provided.");
         }
     }
 

@@ -5,10 +5,10 @@ package ibia.core.entities;
  * types of entities used throughout 
  * ibia:
  * <ul>
- *   <li>COM: Committees</li>
- *   <li>CON: Conferenes</li>
- *   <li>DEL: Delegates</li>
- *   <li>ENT: Any generic entity that implements the Entity interface</li>
+ *   <li>COM: Committees,</li>
+ *   <li>CON: Conferenes,</li>
+ *   <li>DEL: Delegates,</li>
+ *   <li>ENT: Any generic entity that implements the Entity interface.</li>
  * </ul>
  */
 public enum EntityType {

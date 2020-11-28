@@ -4,7 +4,7 @@ import ibia.core.utils.Country;
 import ibia.core.utils.Id;
 
 /**
- * Represents a delegate within a(n) MUN committee.
+ * Represents a delegate within an MUN committee.
  */
 public class Delegate implements Entity {
     private final EntityType type = EntityType.DEL;

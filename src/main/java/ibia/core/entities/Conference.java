@@ -5,7 +5,7 @@ import java.util.Date;
 import ibia.core.utils.Id;
 
 /**
- * Represents a(n) MUN conference.
+ * Represents an MUN conference.
  */
 public class Conference implements Entity {
     private final EntityType type = EntityType.CON;

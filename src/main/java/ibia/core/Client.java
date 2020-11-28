@@ -17,6 +17,7 @@ public class Client {
      * Creates and persists a new Conference instance.
      * 
      * @param name name of conference.
+     * @return the created Conference
      */
     public static Conference addNewConference(String name) {
         Conference conf = new Conference(name);
@@ -29,6 +30,7 @@ public class Client {
      * 
      * @param name name of committee
      * @param conferenceId the parent Conference
+     * @return the created Committee
      */
     public static Committee addNewCommittee(String name, String conferenceId) {
         Committee com = new Committee(name, conferenceId);
@@ -42,6 +44,7 @@ public class Client {
      * @param name name of delegate
      * @param delegation the country ("delegation") assigned to the delegate
      * @param committeeId the parent Committee
+     * @return the created Delegate
      */
     public static Delegate addNewDelegate(String name, String delegation, String committeeId) {
         Delegate del = new Delegate(name, delegation, committeeId);
@@ -50,39 +53,43 @@ public class Client {
     }
 
     /**
-     * Obtain a list of all persisted conferences.
+     * @return ArrayList of all persisted Conferences
      */
     public static ArrayList<Conference> getAllConferences() {
         return DbDriver.fetchAll(Conference.class);
     }
 
     /**
-     * Obtain a list of persisted committees belonging
-     * to a particular conference.
+     * Fetch Committees belonging to a specific Conference
+     * @param conferenceId ID of the Conference
+     * @return ArrayList of Committees
      */
     public static ArrayList<Committee> getConferenceCommittees(String conferenceId) {
         return DbDriver.findAll(Committee.class, c -> c.getConferenceId().equals(conferenceId));
     }
 
     /**
-     * Obtain a list of persisted delegates belonging
-     * to a particular committee.
+     * Fetch Delegates belonging to a specific Committee
+     * @param committeeId ID of the Committee
+     * @return ArrayList of Delegates
      */
     public static ArrayList<Delegate> getCommitteeDelegates(String committeeId) {
         return DbDriver.findAll(Delegate.class, d -> d.getCommitteeId().equals(committeeId));
     }
 
     /**
-     * Obtain a list of persisted topics belonging
-     * to a particular committee.
+     * Fetch Topics belonging to a specific Committee
+     * @param committeeId ID of the Committee
+     * @return ArrayList of Topics
      */
     public static ArrayList<Topic> getCommitteeTopics(String committeeId) {
         return DbDriver.findAll(Topic.class, t -> t.getCommitteeId().equals(committeeId));
     }
 
     /**
-     * Obtain a list of persisted resolutions
-     * belonging to a particular topic.
+     * Fetch Resolutions belonging to a specific Topic
+     * @param topicId ID of the Topic
+     * @return ArrayList of Resolutions
      */
     public static ArrayList<Resolution> getTopicResolutions(int topicId) {
         return DbDriver.findAll(Resolution.class, r -> r.getTopicId() == topicId);
@@ -92,6 +99,7 @@ public class Client {
      * Deletes a Conference instance from the database,
      * including it's child Committees and the
      * Delegates in those committees.
+     * @param confId ID of the Conference
      */
     public static void deleteConference(String confId) {
         deleteConferenceChildren(confId);
@@ -101,6 +109,7 @@ public class Client {
     /**
      * Deletes a Committee instance form the database,
      * including it's child Delegates.
+     * @param comId ID of the Committee
      */
     public static void deleteCommittee(String comId) {
         deleteCommitteeChildren(comId);
@@ -109,6 +118,7 @@ public class Client {
 
     /**
      * Deletes a Delegate instance from the database.
+     * @param delId ID of the Delegate
      */
     public static void deleteDelegate(String delId) {
         DbDriver.deleteById(Delegate.class, delId);
@@ -118,6 +128,7 @@ public class Client {
      * Deletes all child committees belonging to
      * a Conference instance, including the delegates
      * belonging to each of the child committees.
+     * @param confId ID of the Conference
      */
     public static void deleteConferenceChildren(String confId) {
         ArrayList<Committee> coms =
@@ -132,6 +143,7 @@ public class Client {
     /**
      * Deletes all child delegates belonging to
      * a Committee instance.
+     * @param comId ID of the Committee
      */
     public static void deleteCommitteeChildren(String comId) {
         ArrayList<Delegate> dels =
