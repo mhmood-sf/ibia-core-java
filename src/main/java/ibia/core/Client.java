@@ -133,7 +133,8 @@ public class Client {
     public static void deleteConferenceChildren(String confId) {
         ArrayList<Committee> coms =
             DbDriver.findAll(Committee.class, c -> c.getConferenceId().equals(confId));
-        
+
+        if (coms == null) return;
         for (Committee com : coms) {
             deleteCommitteeChildren(com.getId());
             DbDriver.deleteOne(com);
@@ -148,7 +149,8 @@ public class Client {
     public static void deleteCommitteeChildren(String comId) {
         ArrayList<Delegate> dels =
             DbDriver.findAll(Delegate.class, d -> d.getCommitteeId().equals(comId));
-        
+
+        if (dels == null) return;
         for (Delegate del : dels) {
             DbDriver.deleteOne(del);
         }
